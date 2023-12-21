@@ -1,6 +1,7 @@
 import { Box, Grid, Show, GridItem, Flex } from "@chakra-ui/react"
 import GenreList from "../components/GenreList"
 import GamesList from "../components/GamesList"
+import GameHeading from "../components/GameHeading"
 
 const HomePage = () => {
 	console.log("this is home page")
@@ -22,7 +23,7 @@ const HomePage = () => {
 			</Show>
 			<GridItem area="main">
 				<Box paddingLeft={2}>
-					Game Heading goes here
+					<GameHeading />
 					<Flex marginBottom={5}>
 						<Box marginRight={5}>Platform Selector goes here</Box>
 						Sort Selector goes here
