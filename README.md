@@ -3,6 +3,7 @@
 ## Features
 
 ### Filtering by Platform type, and sorting
+### Search box to search among the games
 ### Infinite scrolling in the homepage for Games list
 ### The Grid component used for the list is optimized for different screens, for responsiveness of the page
 ### Click on a Game card, redirects to the Game info page which has games images and video trailer (if exits)
