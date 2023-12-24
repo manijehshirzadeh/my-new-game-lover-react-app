@@ -5,16 +5,16 @@ import {
 	Image,
 	List,
 	ListItem,
-	Spinner
+	Spinner,
+	Text
 } from "@chakra-ui/react"
 import useGenres from "../customHooks/useGenres"
 import getCroppedImageUrl from "../services/image-url"
 import useGameQueryStore from "../store"
 
 const GenreList = () => {
-	console.log("this is genre list")
 	const { data, isLoading, error } = useGenres()
-	console.log({ data })
+
 	const selectedGenreId = useGameQueryStore(s => s.gameQuery.genreId)
 	const setSelectedGenreId = useGameQueryStore(s => s.setGenreId)
 
@@ -30,24 +30,24 @@ const GenreList = () => {
 			<List>
 				{data?.results.map(genre => (
 					<ListItem key={genre.id} paddingY="5px">
-						<HStack>
-							<Image
-								boxSize="32px"
-								borderRadius={8}
-								objectFit="cover"
-								src={getCroppedImageUrl(genre.image_background)}
-							/>
-							<Button
-								whiteSpace="normal"
-								textAlign="left"
-								fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
-								onClick={() => setSelectedGenreId(genre.id)}
-								fontSize="md"
-								variant="link"
-							>
-								{genre.name}
-							</Button>
-						</HStack>
+						<Button
+							width="200px"
+							whiteSpace="normal"
+							fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
+							onClick={() => setSelectedGenreId(genre.id)}
+							fontSize="md"
+							variant={genre.id === selectedGenreId ? "outline" : "ghost"}
+						>
+							<HStack width={"100%"} display={"flex"} flexDirection={"row"}>
+								<Image
+									boxSize="32px"
+									borderRadius={8}
+									objectFit="cover"
+									src={getCroppedImageUrl(genre.image_background)}
+								/>
+								<Text>{genre.name}</Text>
+							</HStack>
+						</Button>
 					</ListItem>
 				))}
 			</List>
